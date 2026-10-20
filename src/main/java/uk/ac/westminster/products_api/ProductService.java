@@ -1,6 +1,5 @@
 package uk.ac.westminster.products_api;
 
-
 import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
@@ -11,6 +10,25 @@ public class ProductService {
 
     private List<Product> products = new ArrayList<>();
     private Long nextId = 1L;
+
+    public ProductService() {
+        products.add(new DigitalProduct(
+                nextId++,
+                "Clean code (e-book)",
+                29.99,
+                "/downloads/clean/clean-code.pdf",
+                4.2
+        ));
+
+        // physical product
+        products.add(new PhysicalProduct(
+                nextId++,
+                "27 inch monitor",
+                247.00,
+                34.5,
+                "61cm and 41cm"
+        ));
+    }
 
     public List<Product> getAllProducts() {
         return products;
